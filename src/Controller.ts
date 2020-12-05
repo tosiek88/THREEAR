@@ -42,7 +42,7 @@ interface Markers {
  * @param parameters parameters for determining things like detection mode and smoothing
  */
 export class Controller extends THREE.EventDispatcher {
-	public postInit: Promise<any>;
+	public postInit: Promise<Controller>;
 	public disposed: boolean;
 	public markers: Markers;
 
@@ -206,7 +206,7 @@ export class Controller extends THREE.EventDispatcher {
 		}
 	}
 
-	private initialize() {
+	private initialize(): Promise<Controller> {
 		return new Promise((resolve, reject) => {
 			this.parameters.source
 				.initialize()
